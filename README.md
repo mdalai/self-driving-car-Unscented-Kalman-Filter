@@ -38,7 +38,7 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 **UKF process**:
 
-        ![alt text][ukf_process]
+   ![alt text][ukf_process]
 
 
 ## The UKF in C++
