@@ -44,6 +44,18 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 ## The UKF in C++
 - UKF code defines a lot of variables. Be careful with each one of them. I just misused variable names. For instance, Xsig_pred vs. Xsig_pred_.
 - New added variables and methods have to be declared in the class definition part.
+- But the object in the simulator ran only one step and stopped. The printed values are strange. The updated state vector x_ and state covariance P_  has many _nan_ values. To find the reason for this error, I decided to print values one by one.
+  - I printed the Xsig_aug, no nan values in it. 
+  - I printed the Xsig_pred, no nan values in it. 
+  - I printed predicted x_, P_, found no nan values.
+  - I printed Zsig, it has _nan_ values in its 3rd row. It means following code has problem: ```Zsig(2,i) = (p_x*v1 + p_y*v2 ) / sqrt(p_x*p_x + p_y*p_y);```. I added a division by zero check as below. The problem solved.
+  ```c++
+   if (sqrt(p_x*p_x + p_y*p_y) > 0.0001){
+     Zsig(2,i) = (p_x*v1 + p_y*v2 ) / sqrt(p_x*p_x + p_y*p_y);
+   } else{
+     Zsig(2,i) = (p_x*v1 + p_y*v2 ) / 0.0001;
+   }
+ ```
 
 
 
