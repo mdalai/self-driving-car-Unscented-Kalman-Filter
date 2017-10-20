@@ -56,8 +56,45 @@ In order to improve accuracy when the object is turning, the UKF added turning p
            Zsig(2,i) = (p_x*v1 + p_y*v2 ) / 0.0001;
          }
      ```
+- Then, the object in simulator ran for little while and stopped again. I checked the RMSE, it is way too high. I updated the following process noise parameters:
+  ```c++
+    // Process noise standard deviation longitudinal acceleration in m/s^2
+    std_a_ = 1.5; // 30;
+    // Process noise standard deviation yaw acceleration in rad/s^2
+    std_yawdd_ = 0.9; // 30;
+  ```
 
+- The object in simulator ran a while and stopped. The RMSE is still high. I changed the initialization value from 1 to 0. This did not help much. The simulator stopped and RMSE is still high.
+  ```c++
+      float v = 0;
+      float yaw = 0;
+      float yaw_r = 0;
+  ```
+- I decided to add the Laser processing part. The result get better, but same problem occurs again. The simulator stopped after while. The RMSE is high.  
+- I found the problem finally. The x_, P_ have to be set to 0 every time I ran the state and covariance matrix prediction, as following:
+   ```c++
+       /**************************************************************************************************
+        *  Predict the state and covariance matrix
+        **************************************************************************************************/
+       //predict state vector
+       x_.fill(0.0);  // !!!!!! remember to set it to 0 every time !!!!!!!!
+       for (int i = 0; i < 2 * n_aug_ + 1; i++) {  //iterate over sigma points
+         x_ = x_+ weights_(i) * Xsig_pred_.col(i);
+       }
 
+       //predict state covariance matrix
+       P_.fill(0.0); // !!!!!! remember to set it to 0 every time !!!!!!!!
+       for (int i = 0; i < 2 * n_aug_ + 1; i++) {  //iterate over sigma points
+
+         // state difference
+         VectorXd x_diff = Xsig_pred_.col(i) - x_;
+         //angle normalization
+         while (x_diff(3)> M_PI) x_diff(3)-=2.*M_PI;
+         while (x_diff(3)<-M_PI) x_diff(3)+=2.*M_PI;
+
+         P_ = P_ + weights_(i) * x_diff * x_diff.transpose() ;
+       }
+   ```
 
 ## Evaluation
 ### RMSE meet the standard
