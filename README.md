@@ -49,13 +49,13 @@ In order to improve accuracy when the object is turning, the UKF added turning p
   - I printed the Xsig_pred, no nan values in it. 
   - I printed predicted x_, P_, found no nan values.
   - I printed Zsig, it has _nan_ values in its 3rd row. It means following code has problem: ```Zsig(2,i) = (p_x*v1 + p_y*v2 ) / sqrt(p_x*p_x + p_y*p_y);```. I added a division by zero check as below. The problem solved.
-  ```c++
-   if (sqrt(p_x*p_x + p_y*p_y) > 0.0001){
-     Zsig(2,i) = (p_x*v1 + p_y*v2 ) / sqrt(p_x*p_x + p_y*p_y);
-   } else{
-     Zsig(2,i) = (p_x*v1 + p_y*v2 ) / 0.0001;
-   }
- ```
+    ```c++
+         if (sqrt(p_x*p_x + p_y*p_y) > 0.0001){
+           Zsig(2,i) = (p_x*v1 + p_y*v2 ) / sqrt(p_x*p_x + p_y*p_y);
+         } else{
+           Zsig(2,i) = (p_x*v1 + p_y*v2 ) / 0.0001;
+         }
+     ```
 
 
 
