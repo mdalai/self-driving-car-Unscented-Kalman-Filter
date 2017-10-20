@@ -38,7 +38,7 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 **UKF process**:
 
-![alt text][ukf_process]
+        ![alt text][ukf_process]
 
 
 ## The UKF in C++
@@ -47,7 +47,7 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 ## Evaluation
 ### RMSE meet the standard
-Standard:Your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
+**Standard**: your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
 
 ### NIS
 
