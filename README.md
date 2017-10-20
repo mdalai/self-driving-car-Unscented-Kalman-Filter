@@ -42,6 +42,8 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 
 ## The UKF in C++
+- UKF code defines a lot of variables. Be careful with each one of them. I just misused variable names. For instance, Xsig_pred vs. Xsig_pred_.
+- New added variables and methods have to be declared in the class definition part.
 
 
 
