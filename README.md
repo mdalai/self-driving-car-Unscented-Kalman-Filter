@@ -8,6 +8,12 @@ The [EKF(Extended Kalman Filter)](https://github.com/mdalai/self-driving-car-Ext
 UKF works better dealing above issues. We will prove this with this project.
 
 
+[//]: # (Image References)
+[ukf_process]: ./assets/UKF_process.PNG
+[pxpy_div0]: ./assets/pxpy_div0.PNG
+[err_updateLaser]: ./assets/err_updateLaser.PNG
+
+
 ## The UKF Intro
 In order to improve accuracy when the object is turning, the UKF added turning parameters. The state is represented with following 5 dimensions:
 - Px: position in X direction.
@@ -27,8 +33,12 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 - **Predict state mean and covarience**: based on the predicted sigma points calculates the new state and covarience.
 
 **Update**:
-- **Predict measurement state and covarience**
-- **Update**
+- **Predict measurement state and covarience**: use predicted sigma points and transform it to Polar space in RADAR. Then calculate mean and covarience. 
+- **Update**: Use the predicted mean and covarience, compare with measurement value, and update the state and covarience accordingly.
+
+**UKF process**:
+
+![alt text][ukf_process]
 
 
 ## The UKF in C++
@@ -36,6 +46,10 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 
 ## Evaluation
+### RMSE meet the standard
+Standard:Your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
+
+### NIS
 
 ## UKF vs. EKF
 ### Tracking pic
