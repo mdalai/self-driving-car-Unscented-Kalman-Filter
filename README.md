@@ -119,5 +119,12 @@ In order to improve accuracy when the object is turning, the UKF added turning p
    ![alt text][ukf_rmse1]
 
 ## UKF vs. EKF
+**Collect data from EKF**:
+- update main.cpp in EKF project.
+- run code:
+```sh
+      cmake .. && make                # compile the code
+      ./ExtendedKF ekf_output.csv     # run the code
+   ```
 
  ![alt text][ukf_ekf_compare]
