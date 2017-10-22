@@ -13,7 +13,8 @@ UKF works better dealing above issues. We will prove this with this project.
 [pxpy_div0]: ./assets/pxpy_div0.PNG
 [err_updateLaser]: ./assets/err_updateLaser.PNG
 [ukf_nis1]: ./assets/ukf_nis1.PNG
-[ukf_nis2]: ./assets/ukf_nis2.PNG
+[ukf_rmse1]: ./assets/ukf_rmse1.PNG
+[ukf_ekf_compare]: ./assets/ukf_ekf_compare.PNG
 
 
 ## The UKF Intro
@@ -108,20 +109,15 @@ In order to improve accuracy when the object is turning, the UKF added turning p
       ./UnscentedKF ukf_output.csv    # run the code
    ```
 ### NIS (Normalized Innovation Squared)
+**Notes**: 95% of NIS values should be within 7.8 line.
+
    ![alt text][ukf_nis1]
 
-95% of NIS values are within 7.8 line. The result is good.
-
-
 ### RMSE meet the standard
-**Standard**: your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
+**Rubric Requirement**: your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
 
-
-
-   ![alt text][ukf_nis2]
+   ![alt text][ukf_rmse1]
 
 ## UKF vs. EKF
-### Tracking pic
 
-### RMSE Plotting
-
+ ![alt text][ukf_ekf_compare]
