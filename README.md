@@ -97,10 +97,16 @@ In order to improve accuracy when the object is turning, the UKF added turning p
    ```
 
 ## Evaluation
+### NIS (Normalized Innovation Squared)
+   ![alt text][NIS]
+
+95% of NIS values are within 7.8 line. The result is good.
+
+
 ### RMSE meet the standard
 **Standard**: your px, py, vx, and vy RMSE should be less than or equal to the values [.09, .10, .40, .30].
 
-### NIS
+
 
 ## UKF vs. EKF
 ### Tracking pic
