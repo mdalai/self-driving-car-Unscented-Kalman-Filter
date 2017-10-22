@@ -12,9 +12,9 @@ UKF works better dealing above issues. We will prove this with this project.
 [ukf_process]: ./assets/UKF_process.PNG
 [pxpy_div0]: ./assets/pxpy_div0.PNG
 [err_updateLaser]: ./assets/err_updateLaser.PNG
-[ukf_nis1]: ./assets/ukf_nis1.PNG
-[ukf_rmse1]: ./assets/ukf_rmse1.PNG
-[ukf_ekf_compare]: ./assets/ukf_ekf_compare.PNG
+[ukf_nis1]: ./assets/ukf_nis1.png
+[ukf_rmse1]: ./assets/ukf_rmse1.png
+[ukf_ekf_compare]: ./assets/ukf_ekf_compare.png
 
 
 ## The UKF Intro
