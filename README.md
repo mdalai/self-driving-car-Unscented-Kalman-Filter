@@ -100,10 +100,12 @@ In order to improve accuracy when the object is turning, the UKF added turning p
 
 ## Evaluation
 ### Data collection
- - Update main.cpp to make it possible to collect data
+ - Update main.cpp to make it possible to collect data: 
+ - Following data are collected: x_true, y_true, vx_true, vy_true, x_est, y_est, vx_est, vy_est	sensor, nis, RMSE_x, RMSE_y, RMSE_vx;
  - Run code. All values will be output in a CSV file.
    ```sh
-      ./UnscentedKF ukf_output.csv
+      cmake .. && make                # compile the code
+      ./UnscentedKF ukf_output.csv    # run the code
    ```
 ### NIS (Normalized Innovation Squared)
    ![alt text][ukf_nis1]
